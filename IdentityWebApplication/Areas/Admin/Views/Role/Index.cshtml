@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "RoleController";
+}
+
+@model List<RoleViewModel>
+
+<a class="btn btn-primary" asp-controller="Role" asp-action="RoleCreate" asp-area="Admin">Create Role</a>
+
+<h2>Roles</h2>
+
+
+<div>
+    @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["Success"]?.ToString();
+                </div>
+            }
+    
+    
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        </thead>
+      
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    <a class="btn btn-warning btn-sm" asp-area="Admin" asp-controller="Role" asp-action="RoleUpdate" asp-route-id="@item.Id">Update</a>
+                    <a class="btn btn-dark btn-sm my-1" asp-area="Admin" asp-controller="Role" asp-action="RoleDelete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+      
+        </tbody>
+      
+    </table>
+    
+</div>
+
+

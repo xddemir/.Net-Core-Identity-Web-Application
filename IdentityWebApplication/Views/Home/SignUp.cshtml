@@ -1,0 +1,63 @@
+@model SignUpViewModel
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+@section Scripts
+{
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-info" role="alert">
+        @TempData["SuccessMessage"]?.ToString();
+    </div>
+}
+
+
+<form asp-controller="Home" asp-action="SignUp" method="post">
+<div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+    <div class="row mb-3">
+        <label asp-for="UserName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="UserName" class="form-control">
+            <span class="text-danger" asp-validation-for="UserName"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="EmailAddress" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="EmailAddress" class="form-control">
+            <span class="text-danger" asp-validation-for="EmailAddress"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="Phone" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Phone" class="form-control">
+            <span class="text-danger" asp-validation-for="Phone"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="Password" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Password" type="password" class="form-control">
+            <span class="text-danger" asp-validation-for="Password"></span>
+
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="PasswordConfirm" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="PasswordConfirm" type="password" class="form-control">
+            <span class="text-danger" asp-validation-for="PasswordConfirm"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>

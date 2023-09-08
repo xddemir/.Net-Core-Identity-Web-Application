@@ -1,0 +1,41 @@
+@using System.Security.Claims
+@if (User.Identity!.IsAuthenticated)
+{
+    <ul class="navbar-nav me-0">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @User.Identity.Name
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" asp-route-returnurl="/Home/Index" asp-controller="Member" asp-action="Index">Profile</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" asp-route-returnurl="/Home/Index" asp-controller="Member" asp-action="UserEdit">Edit Profile</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" asp-route-returnurl="/Home/Index" asp-controller="Member" asp-action="PasswordChange">Password Change</a>
+                </li>
+                @if (User.HasClaim(x => x.Type == ClaimTypes.Role && x.Value == "Admin"))
+                {
+                    <li>
+                        <a class="dropdown-item" asp-route-returnurl="/Home/Index" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin </a>
+                    </li>
+                }
+                <li>
+                    <a class="dropdown-item" asp-route-returnurl="/Home/Index" asp-controller="Member" asp-action="Claims">Claims</a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item" asp-route-returnurl="/Home/Index" asp-controller="Member" asp-action="Logout">Log out</a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+}
+else
+{
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignIn">Sign In</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignUp">Sign Up</a>
+}

@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model UserViewModel
+
+<h1>Welcome User @User?.Identity?.Name</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+        <td>@Model.UserName</td>
+        <td>@Model.Email</td>
+        <td>@Model.Phone</td>
+    </tr>
+    </tbody>
+
+</table>

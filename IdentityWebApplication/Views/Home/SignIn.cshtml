@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+@section Scripts
+{
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+}
+
+@model SignInViewModel
+
+
+<form asp-action="SignIn" asp-route-returnUrl="@Context.Request.Query["returnUrl"]" asp-controller="Home" method="post">
+<div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+  <div class="mb-3">
+    <label asp-for="Email" class="form-label">Email address</label>
+    <input type="email" class="form-control" asp-for="Email" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <span class="text-danger" asp-validation-for="Email"></span>
+  </div>
+  <div class="mb-3">
+    <label asp-for="Password" class="form-label">Password</label>
+    <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1">
+    <span class="text-danger" asp-validation-for="Password"></span>
+  </div>
+  <div class="mb-3 form-check">
+    <input asp-for="RememberMe" type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label asp-for="RememberMe" class="form-check-label" for="exampleCheck1">Remember me</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <div>
+    <a class="btn btn-link" asp-controller="Home" asp-action="ForgotPassword">Forgot your password ?</a>
+    
+  </div>
+</form>

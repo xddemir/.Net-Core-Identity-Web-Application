@@ -1,0 +1,37 @@
+@{
+    ViewBag.Title = "Claims";
+    Layout = "_Layout";
+}
+
+<h2>Claims</h2>
+@{
+    ViewData["Title"] = "UserList";
+}
+
+@model List<ClaimViewModel>
+
+<h2>Claims</h2>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Issuer</th>
+        <th>Type</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+  
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Issuer</td>
+            <td>@item.Type</td>
+            <td>@item.Value</td>
+        </tr>
+    }
+  
+    </tbody>
+  
+</table>
+

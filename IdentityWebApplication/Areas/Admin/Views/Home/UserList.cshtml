@@ -1,0 +1,38 @@
+@{
+  ViewData["Title"] = "UserList";
+}
+
+@model List<IdentityWebApplication.Areas.Admin.Models.UserViewModel>
+
+<h2>title</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>User Name</th>
+    <th>Email</th>
+    <th>Roles</th>
+    <th>Rol Management</th>
+  </tr>
+  </thead>
+  
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>@item.Id</td>
+        <td>@item.Name</td>
+        <td>@item.Email</td>
+        <td>
+          <user-role-names user-id="@item.Id"/>
+        </td>
+        <td>
+          <a asp-controller="Role" asp-action="RoleAssign" asp-route-id="@item.Id">Assign</a>
+        </td>
+      </tr>
+    }
+  
+  </tbody>
+  
+</table>
+
